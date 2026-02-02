@@ -258,7 +258,7 @@ export default function ApplyPage({ params }: Props) {
                         emergencyContact={emergencyContact}
                         listingInfo={{
                             title: listingData.title || "Rental Unit",
-                            address: listing?.property?.address?.street || listingData.address || "Address",
+                            address: listingData.address || (listing?.property as { address?: { street?: string } } | null)?.address?.street || "Address",
                             rent: listingData.rentAmount || listing?.rentAmount || 0,
                             deposit: listingData.depositAmount || listing?.depositAmount || 0,
                         }}
