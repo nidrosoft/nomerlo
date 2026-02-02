@@ -1,0 +1,8 @@
+export default function RevenueMetricsPage() {
+    return (
+        <div>
+            <h1 className="text-3xl font-bold">Revenue Metrics</h1>
+            <p className="mt-4 text-muted-foreground">Coming soon...</p>
+        </div>
+    )
+}

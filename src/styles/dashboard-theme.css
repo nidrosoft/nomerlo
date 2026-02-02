@@ -1,0 +1,443 @@
+/* 
+ * Dashboard Theme - Nomerlo Property Management
+ * 
+ * This theme is applied to all dashboard pages (Owner, Tenant, Maintenance)
+ * Uses teal brand colors for a professional property management look
+ */
+
+/* Apply dashboard theme to both the container AND the body when dashboard-theme is present
+   This ensures React Aria portals (rendered at body level) also get the correct colors */
+.dashboard-theme,
+body.dashboard-theme {
+    /* Dashboard Background Color */
+    --color-bg-secondary: rgb(247 247 247);
+    --color-bg-secondary_subtle: rgb(250 250 250);
+    --background-color-secondary: rgb(247 247 247);
+    --background-color-secondary_subtle: rgb(250 250 250);
+    
+    /* Force brand solid colors for components */
+    --color-bg-brand-solid: rgb(31 96 104);
+    --color-bg-brand-solid_hover: rgb(21 88 88);
+    --background-color-brand-solid: rgb(31 96 104);
+    --background-color-brand-solid_hover: rgb(21 88 88);
+    /* ZeroDenial Healthcare Teal Brand Colors */
+    --color-brand-25: rgb(247 254 253);
+    --color-brand-50: rgb(240 253 250);
+    --color-brand-100: rgb(215 248 232);
+    --color-brand-200: rgb(130 208 142);
+    --color-brand-300: rgb(89 178 159);
+    --color-brand-400: rgb(89 178 159);
+    --color-brand-500: rgb(43 127 117);
+    --color-brand-600: rgb(31 96 104);
+    --color-brand-700: rgb(21 88 88);
+    --color-brand-800: rgb(13 64 73);
+    --color-brand-900: rgb(8 47 60);
+    --color-brand-950: rgb(5 32 41);
+
+    /* Error Colors - Pink/Magenta (#CE2C6B) */
+    --color-error-25: rgb(255 247 250);
+    --color-error-50: rgb(254 240 245);
+    --color-error-100: rgb(252 220 232);
+    --color-error-200: rgb(250 190 212);
+    --color-error-300: rgb(240 140 175);
+    --color-error-400: rgb(220 90 130);
+    --color-error-500: rgb(206 44 107);
+    --color-error-600: rgb(180 35 90);
+    --color-error-700: rgb(150 28 75);
+    --color-error-800: rgb(120 24 62);
+    --color-error-900: rgb(100 22 52);
+    --color-error-950: rgb(70 15 38);
+
+    /* Warning Colors - Golden Yellow (#FFD66B) */
+    --color-warning-25: rgb(255 253 245);
+    --color-warning-50: rgb(255 250 235);
+    --color-warning-100: rgb(255 244 210);
+    --color-warning-200: rgb(255 235 170);
+    --color-warning-300: rgb(255 220 120);
+    --color-warning-400: rgb(255 214 107);
+    --color-warning-500: rgb(240 190 80);
+    --color-warning-600: rgb(210 160 50);
+    --color-warning-700: rgb(180 130 30);
+    --color-warning-800: rgb(150 105 20);
+    --color-warning-900: rgb(120 85 15);
+    --color-warning-950: rgb(80 55 10);
+
+    /* Success Colors - Lime Green (#9CD323) */
+    --color-success-25: rgb(250 254 245);
+    --color-success-50: rgb(245 252 235);
+    --color-success-100: rgb(235 250 210);
+    --color-success-200: rgb(210 240 160);
+    --color-success-300: rgb(180 225 100);
+    --color-success-400: rgb(156 211 35);
+    --color-success-500: rgb(140 190 30);
+    --color-success-600: rgb(120 165 25);
+    --color-success-700: rgb(100 140 20);
+    --color-success-800: rgb(80 115 18);
+    --color-success-900: rgb(65 95 15);
+    --color-success-950: rgb(45 65 10);
+
+    /* UTILITY COLORS - Update to use new brand colors */
+    --color-utility-brand-50: var(--color-brand-50);
+    --color-utility-brand-50_alt: var(--color-brand-50);
+    --color-utility-brand-100: var(--color-brand-100);
+    --color-utility-brand-100_alt: var(--color-brand-100);
+    --color-utility-brand-200: var(--color-brand-200);
+    --color-utility-brand-200_alt: var(--color-brand-200);
+    --color-utility-brand-300: var(--color-brand-300);
+    --color-utility-brand-300_alt: var(--color-brand-300);
+    --color-utility-brand-400: var(--color-brand-400);
+    --color-utility-brand-400_alt: var(--color-brand-400);
+    --color-utility-brand-500: var(--color-brand-500);
+    --color-utility-brand-500_alt: var(--color-brand-500);
+    --color-utility-brand-600: var(--color-brand-600);
+    --color-utility-brand-600_alt: var(--color-brand-600);
+    --color-utility-brand-700: var(--color-brand-700);
+    --color-utility-brand-700_alt: var(--color-brand-700);
+    --color-utility-brand-800: var(--color-brand-800);
+    --color-utility-brand-800_alt: var(--color-brand-800);
+    --color-utility-brand-900: var(--color-brand-900);
+    --color-utility-brand-900_alt: var(--color-brand-900);
+
+    --color-utility-error-50: var(--color-error-50);
+    --color-utility-error-100: var(--color-error-100);
+    --color-utility-error-200: var(--color-error-200);
+    --color-utility-error-300: var(--color-error-300);
+    --color-utility-error-400: var(--color-error-400);
+    --color-utility-error-500: var(--color-error-500);
+    --color-utility-error-600: var(--color-error-600);
+    --color-utility-error-700: var(--color-error-700);
+
+    --color-utility-warning-50: var(--color-warning-50);
+    --color-utility-warning-100: var(--color-warning-100);
+    --color-utility-warning-200: var(--color-warning-200);
+    --color-utility-warning-300: var(--color-warning-300);
+    --color-utility-warning-400: var(--color-warning-400);
+    --color-utility-warning-500: var(--color-warning-500);
+    --color-utility-warning-600: var(--color-warning-600);
+    --color-utility-warning-700: var(--color-warning-700);
+
+    --color-utility-success-50: var(--color-success-50);
+    --color-utility-success-100: var(--color-success-100);
+    --color-utility-success-200: var(--color-success-200);
+    --color-utility-success-300: var(--color-success-300);
+    --color-utility-success-400: var(--color-success-400);
+    --color-utility-success-500: var(--color-success-500);
+    --color-utility-success-600: var(--color-success-600);
+    --color-utility-success-700: var(--color-success-700);
+
+    /* TEXT COLORS */
+    --color-text-error-primary: var(--color-error-600);
+    --color-text-error-primary_hover: var(--color-error-700);
+    --color-text-warning-primary: var(--color-warning-600);
+    --color-text-success-primary: var(--color-success-600);
+    --color-text-brand-primary: var(--color-brand-900);
+    --color-text-brand-secondary: var(--color-brand-700);
+    --color-text-brand-secondary_hover: var(--color-brand-800);
+    --color-text-brand-tertiary: var(--color-brand-600);
+    --color-text-brand-tertiary_alt: var(--color-brand-600);
+
+    /* BORDER COLORS */
+    --color-border-error: var(--color-error-500);
+    --color-border-error_subtle: var(--color-error-300);
+    --color-border-brand: var(--color-brand-500);
+    --color-border-brand_alt: var(--color-brand-600);
+
+    /* FOREGROUND COLORS */
+    --color-fg-warning-primary: var(--color-warning-600);
+    --color-fg-warning-secondary: var(--color-warning-500);
+    --color-fg-success-primary: var(--color-success-600);
+    --color-fg-success-secondary: var(--color-success-500);
+    --color-fg-error-primary: var(--color-error-600);
+    --color-fg-error-secondary: var(--color-error-500);
+    --color-fg-brand-primary: var(--color-brand-600);
+    --color-fg-brand-primary_alt: var(--color-fg-brand-primary);
+    --color-fg-brand-secondary: var(--color-brand-500);
+    --color-fg-brand-secondary_alt: var(--color-fg-brand-secondary);
+    --color-fg-brand-secondary_hover: var(--color-brand-600);
+
+    /* BACKGROUND COLORS */
+    --color-bg-error-primary: var(--color-error-50);
+    --color-bg-error-secondary: var(--color-error-100);
+    --color-bg-error-solid: var(--color-error-600);
+    --color-bg-error-solid_hover: var(--color-error-700);
+    --color-bg-warning-primary: var(--color-warning-50);
+    --color-bg-warning-secondary: var(--color-warning-100);
+    --color-bg-warning-solid: var(--color-warning-600);
+    --color-bg-success-primary: var(--color-success-50);
+    --color-bg-success-secondary: var(--color-success-100);
+    --color-bg-success-solid: var(--color-success-600);
+    --color-bg-brand-primary: var(--color-brand-50);
+    --color-bg-brand-primary_alt: var(--color-brand-50);
+    --color-bg-brand-secondary: var(--color-brand-100);
+    /* --color-bg-brand-solid is set at the top of the file - do not override here */
+    --color-bg-brand-section: var(--color-brand-800);
+    --color-bg-brand-section_subtle: var(--color-brand-700);
+
+    /* COMPONENT COLORS */
+    --color-button-primary-icon: var(--color-brand-300);
+    --color-button-primary-icon_hover: var(--color-brand-200);
+    --color-featured-icon-light-fg-brand: var(--color-brand-600);
+    --color-featured-icon-light-fg-error: var(--color-error-600);
+    --color-featured-icon-light-fg-success: var(--color-success-600);
+    --color-featured-icon-light-fg-warning: var(--color-warning-600);
+    --color-focus-ring-error: var(--color-error-500);
+    --color-focus-ring: var(--color-brand-500);
+    --color-icon-fg-brand: var(--color-brand-600);
+    --color-slider-handle-border: var(--color-brand-600);
+
+    /* BACKGROUND PROPERTY COLORS */
+    --background-color-brand-primary: var(--color-bg-brand-primary);
+    --background-color-brand-primary_alt: var(--color-bg-brand-primary_alt);
+    --background-color-brand-secondary: var(--color-bg-brand-secondary);
+    --background-color-brand-solid: var(--color-bg-brand-solid);
+    --background-color-brand-solid_hover: var(--color-bg-brand-solid_hover);
+    --background-color-brand-section: var(--color-bg-brand-section);
+    --background-color-brand-section_subtle: var(--color-bg-brand-section_subtle);
+    --background-color-error-primary: var(--color-bg-error-primary);
+    --background-color-error-secondary: var(--color-bg-error-secondary);
+    --background-color-error-solid: var(--color-bg-error-solid);
+    --background-color-error-solid_hover: var(--color-bg-error-solid_hover);
+    --background-color-warning-primary: var(--color-bg-warning-primary);
+    --background-color-warning-secondary: var(--color-bg-warning-secondary);
+    --background-color-warning-solid: var(--color-bg-warning-solid);
+    --background-color-success-primary: var(--color-bg-success-primary);
+    --background-color-success-secondary: var(--color-bg-success-secondary);
+    --background-color-success-solid: var(--color-bg-success-solid);
+    --background-color-border-brand: var(--color-border-brand);
+    --background-color-border-brand_alt: var(--color-border-brand_alt);
+
+    /* TEXT PROPERTY COLORS */
+    --text-color-brand-primary: var(--color-text-brand-primary);
+    --text-color-brand-secondary: var(--color-text-brand-secondary);
+    --text-color-brand-secondary_hover: var(--color-text-brand-secondary_hover);
+    --text-color-brand-tertiary: var(--color-text-brand-tertiary);
+    --text-color-brand-tertiary_alt: var(--color-text-brand-tertiary_alt);
+    --text-color-error-primary: var(--color-text-error-primary);
+    --text-color-error-primary_hover: var(--color-text-error-primary_hover);
+    --text-color-warning-primary: var(--color-text-warning-primary);
+    --text-color-success-primary: var(--color-text-success-primary);
+
+    /* BORDER PROPERTY COLORS */
+    --border-color-error: var(--color-border-error);
+    --border-color-error_subtle: var(--color-border-error_subtle);
+    --border-color-brand: var(--color-border-brand);
+    --border-color-brand_alt: var(--color-border-brand_alt);
+    --border-color-brand-solid: var(--color-bg-brand-solid);
+    --border-color-brand-solid_hover: var(--color-bg-brand-solid_hover);
+
+    /* RING PROPERTY COLORS */
+    --ring-color-error: var(--color-border-error);
+    --ring-color-error_subtle: var(--color-border-error_subtle);
+    --ring-color-brand: var(--color-border-brand);
+    --ring-color-brand-solid: var(--color-bg-brand-solid);
+    --ring-color-brand-solid_hover: var(--color-bg-brand-solid_hover);
+    --ring-color-brand_alt: var(--color-border-brand_alt);
+    --ring-color-bg-brand-solid: var(--color-bg-brand-solid);
+
+    /* OUTLINE PROPERTY COLORS */
+    --outline-color-error: var(--color-border-error);
+    --outline-color-error_subtle: var(--color-border-error_subtle);
+    --outline-color-brand: var(--color-border-brand);
+    --outline-color-brand-solid: var(--color-bg-brand-solid);
+    --outline-color-brand-solid_hover: var(--color-bg-brand-solid_hover);
+    --outline-color-brand_alt: var(--color-border-brand_alt);
+
+    /* Override any remaining purple/indigo colors */
+    --color-purple-500: var(--color-brand-500);
+    --color-purple-600: var(--color-brand-600);
+    --color-purple-700: var(--color-brand-700);
+    --color-indigo-500: var(--color-brand-500);
+    --color-indigo-600: var(--color-brand-600);
+    --color-indigo-700: var(--color-brand-700);
+    --color-violet-500: var(--color-brand-500);
+    --color-violet-600: var(--color-brand-600);
+    --color-violet-700: var(--color-brand-700);
+
+    /* Calendar/Date picker specific */
+    --color-utility-purple-50: var(--color-brand-50);
+    --color-utility-purple-100: var(--color-brand-100);
+    --color-utility-purple-200: var(--color-brand-200);
+    --color-utility-purple-300: var(--color-brand-300);
+    --color-utility-purple-400: var(--color-brand-400);
+    --color-utility-purple-500: var(--color-brand-500);
+    --color-utility-purple-600: var(--color-brand-600);
+    --color-utility-purple-700: var(--color-brand-700);
+
+    --color-utility-indigo-50: var(--color-brand-50);
+    --color-utility-indigo-100: var(--color-brand-100);
+    --color-utility-indigo-200: var(--color-brand-200);
+    --color-utility-indigo-300: var(--color-brand-300);
+    --color-utility-indigo-400: var(--color-brand-400);
+    --color-utility-indigo-500: var(--color-brand-500);
+    --color-utility-indigo-600: var(--color-brand-600);
+    --color-utility-indigo-700: var(--color-brand-700);
+
+    --color-utility-violet-50: var(--color-brand-50);
+    --color-utility-violet-100: var(--color-brand-100);
+    --color-utility-violet-200: var(--color-brand-200);
+    --color-utility-violet-300: var(--color-brand-300);
+    --color-utility-violet-400: var(--color-brand-400);
+    --color-utility-violet-500: var(--color-brand-500);
+    --color-utility-violet-600: var(--color-brand-600);
+    --color-utility-violet-700: var(--color-brand-700);
+}
+
+/* Dark mode overrides for dashboard theme */
+.dashboard-theme.dark-mode,
+.dark-mode .dashboard-theme {
+    --color-utility-brand-50: var(--color-brand-950);
+    --color-utility-brand-50_alt: var(--color-utility-gray-50);
+    --color-utility-brand-100: var(--color-brand-900);
+    --color-utility-brand-100_alt: var(--color-utility-gray-100);
+    --color-utility-brand-200: var(--color-brand-800);
+    --color-utility-brand-200_alt: var(--color-utility-gray-200);
+    --color-utility-brand-300: var(--color-brand-700);
+    --color-utility-brand-300_alt: var(--color-utility-gray-300);
+    --color-utility-brand-400: var(--color-brand-600);
+    --color-utility-brand-400_alt: var(--color-utility-gray-400);
+    --color-utility-brand-500: var(--color-brand-500);
+    --color-utility-brand-500_alt: var(--color-utility-gray-500);
+    --color-utility-brand-600: var(--color-brand-400);
+    --color-utility-brand-600_alt: var(--color-utility-gray-600);
+    --color-utility-brand-700: var(--color-brand-300);
+    --color-utility-brand-700_alt: var(--color-utility-gray-700);
+    --color-utility-brand-800: var(--color-brand-200);
+    --color-utility-brand-800_alt: var(--color-utility-gray-800);
+    --color-utility-brand-900: var(--color-brand-100);
+    --color-utility-brand-900_alt: var(--color-utility-gray-900);
+
+    --color-utility-error-50: var(--color-error-950);
+    --color-utility-error-100: var(--color-error-900);
+    --color-utility-error-200: var(--color-error-800);
+    --color-utility-error-300: var(--color-error-700);
+    --color-utility-error-400: var(--color-error-600);
+    --color-utility-error-500: var(--color-error-500);
+    --color-utility-error-600: var(--color-error-400);
+    --color-utility-error-700: var(--color-error-300);
+
+    --color-utility-warning-50: var(--color-warning-950);
+    --color-utility-warning-100: var(--color-warning-900);
+    --color-utility-warning-200: var(--color-warning-800);
+    --color-utility-warning-300: var(--color-warning-700);
+    --color-utility-warning-400: var(--color-warning-600);
+    --color-utility-warning-500: var(--color-warning-500);
+    --color-utility-warning-600: var(--color-warning-400);
+    --color-utility-warning-700: var(--color-warning-300);
+
+    --color-utility-success-50: var(--color-success-950);
+    --color-utility-success-100: var(--color-success-900);
+    --color-utility-success-200: var(--color-success-800);
+    --color-utility-success-300: var(--color-success-700);
+    --color-utility-success-400: var(--color-success-600);
+    --color-utility-success-500: var(--color-success-500);
+    --color-utility-success-600: var(--color-success-400);
+    --color-utility-success-700: var(--color-success-300);
+
+    /* Dark mode text colors */
+    --color-text-error-primary: var(--color-error-400);
+    --color-text-warning-primary: var(--color-warning-400);
+    --color-text-success-primary: var(--color-success-400);
+    --color-text-brand-primary: var(--color-gray-50);
+    --color-text-brand-secondary: var(--color-gray-300);
+    --color-text-brand-tertiary: var(--color-gray-400);
+    --color-text-brand-tertiary_alt: var(--color-gray-50);
+
+    /* Dark mode foreground colors */
+    --color-fg-error-primary: var(--color-error-500);
+    --color-fg-error-secondary: var(--color-error-400);
+    --color-fg-warning-primary: var(--color-warning-500);
+    --color-fg-warning-secondary: var(--color-warning-400);
+    --color-fg-success-primary: var(--color-success-500);
+    --color-fg-success-secondary: var(--color-success-400);
+    --color-fg-brand-primary: var(--color-brand-500);
+    --color-fg-brand-secondary: var(--color-brand-500);
+    --color-fg-brand-primary_alt: var(--color-gray-300);
+    --color-fg-brand-secondary_alt: var(--color-gray-600);
+
+    /* Dark mode background colors */
+    --color-bg-error-primary: var(--color-error-950);
+    --color-bg-error-secondary: var(--color-error-600);
+    --color-bg-error-solid: var(--color-error-600);
+    --color-bg-error-solid_hover: var(--color-error-500);
+    --color-bg-warning-primary: var(--color-warning-950);
+    --color-bg-warning-secondary: var(--color-warning-600);
+    --color-bg-warning-solid: var(--color-warning-600);
+    --color-bg-success-primary: var(--color-success-950);
+    --color-bg-success-secondary: var(--color-success-600);
+    --color-bg-success-solid: var(--color-success-600);
+    --color-bg-brand-primary: var(--color-brand-500);
+    --color-bg-brand-primary_alt: var(--color-bg-secondary);
+    --color-bg-brand-secondary: var(--color-brand-600);
+    /* --color-bg-brand-solid is set at the top of the file - do not override here */
+    --color-bg-brand-section: var(--color-bg-secondary);
+    --color-bg-brand-section_subtle: var(--color-bg-primary);
+
+    /* Dark mode component colors */
+    --color-featured-icon-light-fg-brand: var(--color-brand-200);
+    --color-featured-icon-light-fg-error: var(--color-error-200);
+    --color-featured-icon-light-fg-success: var(--color-success-200);
+    --color-featured-icon-light-fg-warning: var(--color-warning-200);
+    --color-icon-fg-brand: var(--color-gray-400);
+}
+
+/* 
+ * Component-level overrides for dashboard theme
+ * These ensure all branded components use teal instead of purple
+ */
+
+/* Override brand-solid background (buttons, selected dates, etc.) */
+.dashboard-theme .bg-brand-solid,
+.dashboard-theme [class*="bg-brand-solid"] {
+    background-color: rgb(31 96 104) !important;
+}
+
+.dashboard-theme .bg-brand-solid:hover,
+.dashboard-theme .hover\:bg-brand-solid_hover:hover {
+    background-color: rgb(21 88 88) !important;
+}
+
+/* Date picker selected date */
+.dashboard-theme [data-selected="true"] > div,
+.dashboard-theme [aria-selected="true"] > div {
+    background-color: rgb(31 96 104) !important;
+}
+
+/* Focus ring color */
+.dashboard-theme .outline-focus-ring {
+    outline-color: rgb(43 127 117) !important;
+}
+
+/* Brand text colors */
+.dashboard-theme .text-brand-solid {
+    color: rgb(31 96 104) !important;
+}
+
+/* Brand border colors */
+.dashboard-theme .border-brand-solid {
+    border-color: rgb(31 96 104) !important;
+}
+
+/* Ring brand colors */
+.dashboard-theme .ring-brand-solid {
+    --tw-ring-color: rgb(31 96 104) !important;
+}
+
+/* 
+ * Portal Theme Overrides
+ * React Aria portals render at body level, outside .dashboard-theme container
+ * These rules ensure portals (dialogs, popovers, etc.) use the correct brand colors
+ * The DashboardThemeProvider adds .dashboard-theme to the body element
+ */
+body.dashboard-theme .bg-brand-solid {
+    background-color: rgb(31 96 104) !important;
+}
+
+body.dashboard-theme .bg-brand-solid:hover,
+body.dashboard-theme .hover\:bg-brand-solid_hover:hover {
+    background-color: rgb(21 88 88) !important;
+}
+
+/* Calendar date selection */
+body.dashboard-theme [data-selected="true"] > div {
+    background-color: rgb(31 96 104) !important;
+}

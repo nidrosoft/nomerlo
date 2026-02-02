@@ -1,0 +1,144 @@
+@import "tailwindcss";
+@import "./theme.css";
+@import "./dashboard-theme.css";
+@import "./typography.css";
+
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-react-aria-components";
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:where(.dark-mode, .dark-mode *));
+@custom-variant label (& [data-label]);
+@custom-variant focus-input-within (&:has(input:focus));
+
+@utility scrollbar-hide {
+    /* For Webkit-based browsers (Chrome, Safari and Opera) */
+    &::-webkit-scrollbar {
+        display: none;
+        -webkit-appearance: none;
+    }
+
+    /* For IE, Edge and Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+@utility transition-inherit-all {
+    transition-property: inherit;
+    transition-duration: inherit;
+    transition-timing-function: inherit;
+}
+
+html,
+body {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-variant-ligatures: contextual;
+    font-variant-ligatures: contextual;
+    -webkit-font-kerning: normal;
+    font-kerning: normal;
+}
+
+/* Hide the default expand arrow on Safari.  */
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Hide default arrows from number inputs. */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Hide the default clear button (X) from search inputs. */
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+/* Moving Dot Card Animation */
+@keyframes moveDot {
+  0%, 100% {
+    top: 10%;
+    right: 10%;
+  }
+  25% {
+    top: 10%;
+    right: calc(100% - 12px);
+  }
+  50% {
+    top: calc(100% - 12px);
+    right: calc(100% - 12px);
+  }
+  75% {
+    top: calc(100% - 12px);
+    right: 10%;
+  }
+}
+
+.dot-card-outer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.dot-card-outer .moving-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  z-index: 20;
+  opacity: 0;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
+  transition: opacity 0.3s ease;
+}
+
+.dot-card-outer:hover .moving-dot {
+  opacity: 1;
+  animation: moveDot 4s linear infinite;
+}
+
+.dot-card-outer .card-border {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease;
+}
+
+.dot-card-outer:hover .card-border {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.dot-card-outer .card-border.top-line {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+
+.dot-card-outer .card-border.bottom-line {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+
+.dot-card-outer .card-border.left-line {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+}
+
+.dot-card-outer .card-border.right-line {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 1px;
+}
