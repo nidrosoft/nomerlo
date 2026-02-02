@@ -726,7 +726,7 @@ export default function ListingsPage() {
             {sortedAndFilteredListings.map((listing) => (
               <a
                 key={listing.id}
-                href={`/listings/${listing.slug || listing.id}`}
+                href={`/listings/${"slug" in listing ? listing.slug : listing.id}`}
                 className="group bg-white border border-gray-200 rounded-2xl p-2 hover:shadow-lg transition-shadow"
               >
                 {/* Image */}
