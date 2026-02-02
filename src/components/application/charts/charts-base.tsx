@@ -38,7 +38,7 @@ export function ChartTooltipContent({
         return null;
     }
 
-    const formattedLabel = labelFormatter ? labelFormatter(label, payload) : label;
+    const formattedLabel = labelFormatter ? labelFormatter(label as any, payload as any) : label;
 
     return (
         <div
