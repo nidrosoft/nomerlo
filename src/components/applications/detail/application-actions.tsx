@@ -53,7 +53,7 @@ export function ApplicationActions({
                     <Button
                         onClick={() => setShowDenyModal(true)}
                         disabled={isLoading}
-                        variant="secondary"
+                        color="secondary"
                         className="flex items-center gap-2 border-error-secondary text-error-primary hover:bg-error-secondary"
                     >
                         <X className="size-4" />
@@ -63,7 +63,7 @@ export function ApplicationActions({
                     <Button
                         onClick={onRequestInfo}
                         disabled={isLoading}
-                        variant="secondary"
+                        color="secondary"
                         className="flex items-center gap-2"
                     >
                         <Mail className="size-4" />
