@@ -480,15 +480,11 @@ export default function ApplicationsPage() {
                         </div>
 
                         <div className="flex items-center gap-4">
-                            {/* View Toggle */}
+                            {/* View Toggle - inside list view, so list is active */}
                             <div className="flex items-center gap-2">
                                 <button
                                     onClick={() => setViewMode("grid")}
-                                    className={`rounded-full border p-3 transition-colors ${
-                                        viewMode === "grid"
-                                            ? "border-primary bg-primary text-fg-primary shadow-sm"
-                                            : "border-secondary text-tertiary hover:bg-secondary"
-                                    }`}
+                                    className="rounded-full border border-secondary p-3 text-tertiary transition-colors hover:bg-secondary"
                                 >
                                     <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                         <rect x="3" y="3" width="7" height="7" rx="1" />
@@ -499,11 +495,7 @@ export default function ApplicationsPage() {
                                 </button>
                                 <button
                                     onClick={() => setViewMode("list")}
-                                    className={`rounded-full border p-3 transition-colors ${
-                                        viewMode === "list"
-                                            ? "border-primary bg-primary text-fg-primary shadow-sm"
-                                            : "border-secondary text-tertiary hover:bg-secondary"
-                                    }`}
+                                    className="rounded-full border border-primary bg-primary p-3 text-fg-primary shadow-sm transition-colors"
                                 >
                                     <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                         <line x1="3" y1="6" x2="21" y2="6" />
