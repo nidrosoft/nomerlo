@@ -361,7 +361,7 @@ export function AddApplicantModal({ isOpen, onClose }: AddApplicantModalProps) {
                 {/* Actions */}
                 <div className="mt-6 flex justify-between">
                     <Button
-                        variant="secondary"
+                        color="secondary"
                         onClick={() => (step > 1 ? setStep(step - 1) : handleClose())}
                         disabled={isSubmitting}
                     >
