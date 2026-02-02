@@ -11,6 +11,14 @@ interface ChartTooltipContentProps extends TooltipProps<ValueType, NameType> {
     indicator?: "line" | "dot" | "dashed";
     nameKey?: string;
     labelKey?: string;
+    payload?: Array<{
+        value?: ValueType;
+        name?: NameType;
+        color?: string;
+        dataKey?: string;
+        payload?: Record<string, unknown>;
+        [key: string]: unknown;
+    }>;
 }
 
 export function ChartTooltipContent({
