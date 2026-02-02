@@ -52,19 +52,23 @@ export const listInvites = query({
         let invites;
 
         if (args.organizationId) {
+            // Store in local variable to help TypeScript narrow the type
+            const orgId = args.organizationId;
+            
             if (args.status) {
+                const status = args.status;
                 invites = await ctx.db
                     .query("applicationInvites")
                     .withIndex("by_status", (q) => 
-                        q.eq("organizationId", args.organizationId)
-                         .eq("status", args.status as any)
+                        q.eq("organizationId", orgId)
+                         .eq("status", status as any)
                     )
                     .order("desc")
                     .collect();
             } else {
                 invites = await ctx.db
                     .query("applicationInvites")
-                    .withIndex("by_org", (q) => q.eq("organizationId", args.organizationId))
+                    .withIndex("by_org", (q) => q.eq("organizationId", orgId))
                     .order("desc")
                     .collect();
             }
