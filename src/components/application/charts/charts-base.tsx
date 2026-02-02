@@ -53,7 +53,7 @@ export function ChartTooltipContent({
             <div className="flex flex-col gap-1">
                 {payload.map((entry, index) => {
                     const value = formatter
-                        ? formatter(entry.value, entry.name, entry, index, payload)
+                        ? formatter(entry.value as any, entry.name as any, entry as any, index, payload as any)
                         : entry.value;
 
                     return (
