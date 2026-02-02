@@ -84,9 +84,10 @@ export const listListings = query({
             );
         }
 
+        const orgId = args.organizationId;
         const listings = await ctx.db
             .query("listings")
-            .withIndex("by_org", (q) => q.eq("organizationId", args.organizationId))
+            .withIndex("by_org", (q) => q.eq("organizationId", orgId))
             .collect();
 
         const listingsWithDetails = await Promise.all(

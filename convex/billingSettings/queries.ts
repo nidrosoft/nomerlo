@@ -7,9 +7,10 @@ export const getBillingSettings = query({
     handler: async (ctx, args) => {
         // If org provided, get specific settings
         if (args.organizationId) {
+            const orgId = args.organizationId;
             const settings = await ctx.db
                 .query("billingSettings")
-                .withIndex("by_org", (q) => q.eq("organizationId", args.organizationId))
+                .withIndex("by_org", (q) => q.eq("organizationId", orgId))
                 .first();
             return settings;
         }

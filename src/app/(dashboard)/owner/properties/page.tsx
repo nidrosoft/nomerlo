@@ -181,7 +181,7 @@ export default function PropertiesPage() {
             totalUnits: property.units?.length || 0,
             occupiedUnits: property.units?.filter((u) => u.status === "occupied").length || 0,
             vacantUnits: property.units?.filter((u) => u.status === "vacant").length || 0,
-            monthlyRevenue: property.units?.reduce((sum, u) => sum + (u.rentAmount || 0), 0) || 0,
+            monthlyRevenue: property.units?.reduce((sum, u) => sum + (u.marketRent || 0), 0) || 0,
             status: property.status as "active" | "inactive" | "maintenance",
         }));
     }, [convexProperties]);

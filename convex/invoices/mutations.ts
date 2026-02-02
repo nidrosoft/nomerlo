@@ -91,18 +91,19 @@ export const markAsPaid = mutation({
         });
 
         // Record the payment
+        const lease = await ctx.db.get(invoice.leaseId);
         await ctx.db.insert("payments", {
             organizationId: invoice.organizationId,
             tenantId: invoice.tenantId,
             leaseId: invoice.leaseId,
-            unitId: (await ctx.db.get(invoice.leaseId))?.unitId!,
+            unitId: lease?.unitId!,
             type: "rent",
             amount: invoice.total,
+            description: `Payment for invoice ${invoice.invoiceNumber}`,
             status: "completed",
-            paymentMethod: (args.paymentMethod as any) || "manual",
+            paymentMethodType: args.paymentMethod || "manual",
             dueDate: invoice.dueDate,
             paidAt: args.paymentDate || now,
-            isLate: (args.paymentDate || now) > invoice.dueDate,
             createdAt: now,
             updatedAt: now,
         });

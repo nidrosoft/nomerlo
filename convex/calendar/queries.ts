@@ -11,15 +11,17 @@ export const getCalendarEvents = query({
         propertyId: v.optional(v.id("properties")),
     },
     handler: async (ctx, args) => {
-        let eventsQuery = ctx.db.query("calendarEvents");
+        let events;
 
         if (args.organizationId) {
-            eventsQuery = eventsQuery.withIndex("by_org", (q) => 
-                q.eq("organizationId", args.organizationId!)
-            );
+            const orgId = args.organizationId;
+            events = await ctx.db
+                .query("calendarEvents")
+                .withIndex("by_org", (q) => q.eq("organizationId", orgId))
+                .collect();
+        } else {
+            events = await ctx.db.query("calendarEvents").collect();
         }
-
-        let events = await eventsQuery.collect();
 
         // Filter by date range
         if (args.startDate && args.endDate) {
@@ -99,15 +101,17 @@ export const getUpcomingEvents = query({
         const sevenDaysFromNow = now + 7 * 24 * 60 * 60 * 1000;
         const limit = args.limit || 10;
 
-        let eventsQuery = ctx.db.query("calendarEvents");
+        let events;
 
         if (args.organizationId) {
-            eventsQuery = eventsQuery.withIndex("by_org", (q) =>
-                q.eq("organizationId", args.organizationId!)
-            );
+            const orgId = args.organizationId;
+            events = await ctx.db
+                .query("calendarEvents")
+                .withIndex("by_org", (q) => q.eq("organizationId", orgId))
+                .collect();
+        } else {
+            events = await ctx.db.query("calendarEvents").collect();
         }
-
-        const events = await eventsQuery.collect();
 
         const upcomingEvents = events
             .filter(
@@ -127,15 +131,17 @@ export const getUpcomingEvents = query({
 export const getEventStats = query({
     args: { organizationId: v.optional(v.id("organizations")) },
     handler: async (ctx, args) => {
-        let eventsQuery = ctx.db.query("calendarEvents");
+        let events;
 
         if (args.organizationId) {
-            eventsQuery = eventsQuery.withIndex("by_org", (q) =>
-                q.eq("organizationId", args.organizationId!)
-            );
+            const orgId = args.organizationId;
+            events = await ctx.db
+                .query("calendarEvents")
+                .withIndex("by_org", (q) => q.eq("organizationId", orgId))
+                .collect();
+        } else {
+            events = await ctx.db.query("calendarEvents").collect();
         }
-
-        const events = await eventsQuery.collect();
         const now = Date.now();
         const startOfMonth = new Date();
         startOfMonth.setDate(1);

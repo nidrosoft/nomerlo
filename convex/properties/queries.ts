@@ -39,9 +39,10 @@ export const listProperties = query({
             );
         }
 
+        const orgId = args.organizationId;
         const properties = await ctx.db
             .query("properties")
-            .withIndex("by_org", (q) => q.eq("organizationId", args.organizationId))
+            .withIndex("by_org", (q) => q.eq("organizationId", orgId))
             .collect();
 
         // Get units for each property
@@ -104,9 +105,10 @@ export const getPropertyStats = query({
         let properties;
         
         if (args.organizationId) {
+            const orgId = args.organizationId;
             properties = await ctx.db
                 .query("properties")
-                .withIndex("by_org", (q) => q.eq("organizationId", args.organizationId))
+                .withIndex("by_org", (q) => q.eq("organizationId", orgId))
                 .collect();
         } else {
             properties = await ctx.db.query("properties").collect();

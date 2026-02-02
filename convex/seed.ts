@@ -822,7 +822,7 @@ export const seedBillingData = mutation({
             // Create invoice
             const invoiceNumber = `INV-2026-${String(i + 1).padStart(3, "0")}`;
             const dueDate = now - (10 - i * 3) * 24 * 60 * 60 * 1000; // Stagger due dates
-            const rentAmount = lease.monthlyRent || 1500;
+            const rentAmount = lease.rentAmount || 1500;
 
             const invoiceId = await ctx.db.insert("invoices", {
                 organizationId: org._id,
@@ -855,11 +855,11 @@ export const seedBillingData = mutation({
                     unitId: tenant.unitId,
                     type: "rent",
                     amount: rentAmount,
+                    description: `Rent payment for invoice ${invoiceNumber}`,
                     status: "completed",
-                    paymentMethod: paymentMethods[i % paymentMethods.length],
+                    paymentMethodType: paymentMethods[i % paymentMethods.length],
                     dueDate,
                     paidAt: dueDate + (Math.random() * 2 - 1) * 24 * 60 * 60 * 1000,
-                    isLate: false,
                     createdAt: now,
                     updatedAt: now,
                 });

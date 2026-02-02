@@ -231,8 +231,8 @@ export default function ApplicationsPage() {
         return {
             all: s.total,
             new: s.submitted,
-            review: s.underReview + (s.screening || 0),
-            approved: s.approved + (s.conditionallyApproved || 0),
+            review: s.underReview,
+            approved: s.approved,
             denied: s.denied,
         };
     }, [applicationStats, allApplications, isLoading]);

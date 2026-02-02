@@ -11,7 +11,7 @@ import { cx } from "@/utils/cx";
 // Types
 // ============================================================================
 
-type PortalType = "owner" | "tenant" | "maintenance";
+type PortalType = "owner" | "tenant" | "maintenance" | "admin";
 
 interface DashboardHeaderProps {
     portalType: PortalType;

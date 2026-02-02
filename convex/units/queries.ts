@@ -57,9 +57,10 @@ export const listUnitsByOrg = query({
             );
         }
 
+        const orgId = args.organizationId;
         const units = await ctx.db
             .query("units")
-            .withIndex("by_org", (q) => q.eq("organizationId", args.organizationId))
+            .withIndex("by_org", (q) => q.eq("organizationId", orgId))
             .collect();
 
         const unitsWithProperty = await Promise.all(

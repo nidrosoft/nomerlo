@@ -28,9 +28,10 @@ export const listPayments = query({
         let payments;
 
         if (args.organizationId) {
+            const orgId = args.organizationId;
             payments = await ctx.db
                 .query("payments")
-                .withIndex("by_org", (q) => q.eq("organizationId", args.organizationId))
+                .withIndex("by_org", (q) => q.eq("organizationId", orgId))
                 .order("desc")
                 .collect();
         } else {

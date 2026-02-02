@@ -19,8 +19,8 @@ export const getTenant = query({
             .withIndex("by_tenant", (q) => q.eq("tenantId", args.tenantId))
             .collect();
 
-        const onTimePayments = payments.filter((p) => p.status === "completed" && !p.isLate).length;
-        const latePayments = payments.filter((p) => p.status === "completed" && p.isLate).length;
+        const onTimePayments = payments.filter((p) => p.status === "completed" && p.paidAt && p.paidAt <= p.dueDate).length;
+        const latePayments = payments.filter((p) => p.status === "completed" && p.paidAt && p.paidAt > p.dueDate).length;
         const totalPaid = payments
             .filter((p) => p.status === "completed")
             .reduce((sum, p) => sum + p.amount, 0);
@@ -51,18 +51,20 @@ export const listTenants = query({
         let tenants;
 
         if (args.organizationId) {
+            const orgId = args.organizationId;
             if (args.status) {
+                const status = args.status;
                 tenants = await ctx.db
                     .query("tenants")
                     .withIndex("by_status", (q) =>
-                        q.eq("organizationId", args.organizationId).eq("status", args.status as any)
+                        q.eq("organizationId", orgId).eq("status", status as any)
                     )
                     .order("desc")
                     .collect();
             } else {
                 tenants = await ctx.db
                     .query("tenants")
-                    .withIndex("by_org", (q) => q.eq("organizationId", args.organizationId))
+                    .withIndex("by_org", (q) => q.eq("organizationId", orgId))
                     .order("desc")
                     .collect();
             }
@@ -115,9 +117,10 @@ export const getTenantStats = query({
         let tenants;
 
         if (args.organizationId) {
+            const orgId = args.organizationId;
             tenants = await ctx.db
                 .query("tenants")
-                .withIndex("by_org", (q) => q.eq("organizationId", args.organizationId))
+                .withIndex("by_org", (q) => q.eq("organizationId", orgId))
                 .collect();
         } else {
             tenants = await ctx.db.query("tenants").collect();
@@ -151,9 +154,10 @@ export const getExpiringLeases = query({
 
         let tenants;
         if (args.organizationId) {
+            const orgId = args.organizationId;
             tenants = await ctx.db
                 .query("tenants")
-                .withIndex("by_org", (q) => q.eq("organizationId", args.organizationId))
+                .withIndex("by_org", (q) => q.eq("organizationId", orgId))
                 .collect();
         } else {
             tenants = await ctx.db.query("tenants").collect();

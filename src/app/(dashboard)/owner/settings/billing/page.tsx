@@ -324,13 +324,13 @@ export default function SubscriptionBillingPage() {
                         <div className="flex justify-between text-sm mb-2">
                             <span className="text-tertiary">AI Assistant Usage</span>
                             <span className="text-primary font-medium">
-                                {usage.aiInteractionsRemaining} remaining this month
+                                {usage.aiInteractionsRemaining ?? 0} remaining this month
                             </span>
                         </div>
                         <div className="h-2 w-full rounded-full bg-secondary/50">
                             <div
                                 className="h-2 rounded-full bg-brand-primary transition-all"
-                                style={{ width: `${Math.min(100 - (usage.aiInteractionsRemaining / usage.aiInteractionsAllowed) * 100, 100)}%` }}
+                                style={{ width: `${Math.min(100 - ((usage.aiInteractionsRemaining ?? 0) / (usage.aiInteractionsAllowed || 1)) * 100, 100)}%` }}
                             />
                         </div>
                     </div>
@@ -369,7 +369,7 @@ export default function SubscriptionBillingPage() {
                         <Table.Head id="invoice" label="" />
                     </Table.Header>
 
-                    <Table.Body items={payments}>
+                    <Table.Body items={payments as any[]}>
                         {(payment) => (
                             <Table.Row id={payment._id}>
                                 <Table.Cell>

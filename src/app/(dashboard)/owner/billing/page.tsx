@@ -9,7 +9,7 @@ import {
     Plus,
     Settings01,
     SearchMd,
-    FileText,
+    File02,
     CheckCircle,
     Send01,
     XCircle,

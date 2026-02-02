@@ -15,15 +15,18 @@ export const listConversations = query({
         searchQuery: v.optional(v.string()),
     },
     handler: async (ctx, args) => {
-        let conversationsQuery = ctx.db.query("conversations");
+        let conversations;
 
         if (args.organizationId) {
-            conversationsQuery = conversationsQuery.withIndex("by_org", (q) =>
-                q.eq("organizationId", args.organizationId!)
-            );
+            const orgId = args.organizationId;
+            conversations = await ctx.db
+                .query("conversations")
+                .withIndex("by_org", (q) => q.eq("organizationId", orgId))
+                .order("desc")
+                .collect();
+        } else {
+            conversations = await ctx.db.query("conversations").order("desc").collect();
         }
-
-        let conversations = await conversationsQuery.order("desc").collect();
 
         // Filter by type based on participant roles
         if (args.filter && args.filter !== "all") {
@@ -172,15 +175,17 @@ export const getConversationMessages = query({
 export const getUnreadCount = query({
     args: { organizationId: v.optional(v.id("organizations")) },
     handler: async (ctx, args) => {
-        let conversationsQuery = ctx.db.query("conversations");
+        let conversations;
 
         if (args.organizationId) {
-            conversationsQuery = conversationsQuery.withIndex("by_org", (q) =>
-                q.eq("organizationId", args.organizationId!)
-            );
+            const orgId = args.organizationId;
+            conversations = await ctx.db
+                .query("conversations")
+                .withIndex("by_org", (q) => q.eq("organizationId", orgId))
+                .collect();
+        } else {
+            conversations = await ctx.db.query("conversations").collect();
         }
-
-        const conversations = await conversationsQuery.collect();
 
         let totalUnread = 0;
         conversations.forEach((conv) => {
@@ -196,15 +201,17 @@ export const getUnreadCount = query({
 export const getMessageStats = query({
     args: { organizationId: v.optional(v.id("organizations")) },
     handler: async (ctx, args) => {
-        let conversationsQuery = ctx.db.query("conversations");
+        let conversations;
 
         if (args.organizationId) {
-            conversationsQuery = conversationsQuery.withIndex("by_org", (q) =>
-                q.eq("organizationId", args.organizationId!)
-            );
+            const orgId = args.organizationId;
+            conversations = await ctx.db
+                .query("conversations")
+                .withIndex("by_org", (q) => q.eq("organizationId", orgId))
+                .collect();
+        } else {
+            conversations = await ctx.db.query("conversations").collect();
         }
-
-        const conversations = await conversationsQuery.collect();
 
         let totalUnread = 0;
         let tenantConvs = 0;

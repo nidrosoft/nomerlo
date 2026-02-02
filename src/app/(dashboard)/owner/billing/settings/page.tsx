@@ -16,15 +16,34 @@ import {
 import type { LateFeeData } from "@/components/billing/settings/late-fee-settings";
 import type { ReminderData } from "@/components/billing/settings/reminder-settings";
 
+// Settings type
+interface BillingSettings {
+    payoutSchedule: "daily" | "weekly" | "monthly";
+    achEnabled: boolean;
+    cardEnabled: boolean;
+    paypalEnabled: boolean;
+    checkEnabled: boolean;
+    lateFeeEnabled: boolean;
+    lateFeeType: "fixed" | "percentage";
+    lateFeeAmount: number;
+    gracePeriodDays: number;
+    autoApplyLateFee: boolean;
+    remindersEnabled: boolean;
+    beforeDueDays: number[];
+    afterDueDays: number[];
+    emailRemindersEnabled: boolean;
+    smsRemindersEnabled: boolean;
+}
+
 // Default settings
-const defaultSettings = {
-    payoutSchedule: "daily" as const,
+const defaultSettings: BillingSettings = {
+    payoutSchedule: "daily",
     achEnabled: true,
     cardEnabled: true,
     paypalEnabled: false,
     checkEnabled: false,
     lateFeeEnabled: true,
-    lateFeeType: "fixed" as const,
+    lateFeeType: "fixed",
     lateFeeAmount: 50,
     gracePeriodDays: 5,
     autoApplyLateFee: true,

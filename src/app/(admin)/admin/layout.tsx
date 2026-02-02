@@ -12,7 +12,7 @@ export default function AdminPortalLayout({
         <div className="flex min-h-svh w-full flex-col bg-secondary">
             <DashboardSidebar portalType="admin" />
             <div className="flex flex-1 flex-col lg:pl-[288px]">
-                <DashboardHeader />
+                <DashboardHeader portalType="admin" />
                 <main className="flex-1 px-4 pb-4 lg:px-6 lg:pb-6">{children}</main>
             </div>
         </div>

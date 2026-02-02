@@ -235,10 +235,10 @@ export default function TenantsPage() {
             unitName: tenant.unit?.name || tenant.unit?.unitNumber || "Unknown Unit",
             leaseStart: tenant.lease?.startDate,
             leaseEnd: tenant.lease?.endDate,
-            monthlyRent: tenant.lease?.monthlyRent || 0,
+            monthlyRent: tenant.lease?.rentAmount || 0,
             currentBalance: tenant.currentBalance || 0,
-            lastPaymentDate: tenant.lastPaymentDate,
-            lastPaymentAmount: tenant.lastPaymentAmount,
+            lastPaymentDate: undefined, // Not tracked on tenant
+            lastPaymentAmount: undefined, // Not tracked on tenant
             moveOutDate: tenant.moveOutDate,
             portalStatus: tenant.portalStatus as TenantData["portalStatus"],
         }));
