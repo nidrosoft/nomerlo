@@ -119,7 +119,7 @@ export default function ApplyPage({ params }: Props) {
         currentResidence.rent !== "";
 
     const isStep3Valid =
-        employment.status !== "" &&
+        Boolean(employment.status) &&
         employment.income !== "";
 
     const isStep4Valid =
