@@ -28,7 +28,6 @@ import { Input } from "@/components/base/input/input";
 import { Select } from "@/components/base/select/select";
 import { SelectItem } from "@/components/base/select/select-item";
 import { TenantCard, InviteTenantModal, type TenantData } from "@/components/tenants";
-import { PropertyToolbar } from "@/components/dashboard/properties";
 import { LoadingIndicator } from "@/components/application/loading-indicator/loading-indicator";
 
 // Demo tenants data
@@ -367,16 +366,44 @@ export default function TenantsPage() {
             </div>
 
             {/* Toolbar */}
-            <PropertyToolbar
-                searchQuery={searchQuery}
-                onSearchChange={setSearchQuery}
-                viewMode={viewMode}
-                onViewModeChange={setViewMode}
-                sortBy={sortBy}
-                onSortChange={setSortBy}
-                totalCount={filteredTenants.length}
-                label="tenants"
-            />
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2">
+                        <button
+                            onClick={() => setViewMode("grid")}
+                            className={`rounded-full border p-3 transition-colors ${
+                                viewMode === "grid"
+                                    ? "border-primary bg-primary text-fg-primary shadow-sm"
+                                    : "border-secondary text-tertiary hover:bg-secondary"
+                            }`}
+                        >
+                            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <rect x="3" y="3" width="7" height="7" rx="1" />
+                                <rect x="14" y="3" width="7" height="7" rx="1" />
+                                <rect x="3" y="14" width="7" height="7" rx="1" />
+                                <rect x="14" y="14" width="7" height="7" rx="1" />
+                            </svg>
+                        </button>
+                        <button
+                            onClick={() => setViewMode("list")}
+                            className={`rounded-full border p-3 transition-colors ${
+                                viewMode === "list"
+                                    ? "border-primary bg-primary text-fg-primary shadow-sm"
+                                    : "border-secondary text-tertiary hover:bg-secondary"
+                            }`}
+                        >
+                            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <line x1="3" y1="6" x2="21" y2="6" />
+                                <line x1="3" y1="12" x2="21" y2="12" />
+                                <line x1="3" y1="18" x2="21" y2="18" />
+                            </svg>
+                        </button>
+                    </div>
+                    <p className="text-secondary">
+                        Showing <span className="font-medium text-primary">{filteredTenants.length}</span> tenants
+                    </p>
+                </div>
+            </div>
 
             {/* Tabs */}
             <div className="rounded-xl border border-secondary bg-primary p-1">
