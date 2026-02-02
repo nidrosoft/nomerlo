@@ -167,7 +167,7 @@ export default function ExpensesPage() {
                             <Input
                                 className="w-full lg:w-64"
                                 placeholder="Search expenses..."
-                                iconLeading={SearchMd}
+                                icon={SearchMd}
                                 value={searchQuery}
                                 onChange={setSearchQuery}
                                 size="sm"
