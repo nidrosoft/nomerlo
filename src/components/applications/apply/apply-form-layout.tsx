@@ -131,8 +131,8 @@ export function ApplyFormLayout({
                         <Button
                             color="secondary"
                             size="lg"
-                            onPress={isFirstStep ? onCancel : onBack}
-                            isDisabled={isSubmitting}
+                            onClick={isFirstStep ? onCancel : onBack}
+                            disabled={isSubmitting}
                             className="min-w-[120px]"
                         >
                             {isFirstStep ? "Cancel" : "Back"}
@@ -144,8 +144,8 @@ export function ApplyFormLayout({
                             <Button
                                 color="primary"
                                 size="lg"
-                                onPress={onNext}
-                                isDisabled={isNextDisabled || isSubmitting}
+                                onClick={onNext}
+                                disabled={isNextDisabled || isSubmitting}
                                 className="min-w-[160px]"
                             >
                                 {isSubmitting ? "Submitting..." : isLastStep ? "Submit Application" : "Continue"}
