@@ -275,7 +275,7 @@ export default function ApplyPage({ params }: Props) {
     return (
         <ApplyFormLayout
             listingTitle={listingData.title || listing?.title || "Rental Application"}
-            propertyName={listingData.propertyName || listing?.property?.name || "Property"}
+            propertyName={("propertyName" in listingData ? listingData.propertyName : null) || listing?.property?.name || "Property"}
             currentStep={currentStep}
             totalSteps={6}
             onBack={handleBack}
