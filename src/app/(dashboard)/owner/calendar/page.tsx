@@ -45,8 +45,8 @@ export default function CalendarPage() {
     );
 }
 
-// Helper to map event types to colors
-function getEventColor(type: string): "brand" | "orange" | "rose" | "green" | "blue" | "purple" | "gray" {
+// Helper to map event types to valid calendar colors
+function getEventColor(type: string): "brand" | "orange" | "pink" | "green" | "blue" | "purple" | "gray" | "indigo" | "yellow" {
     switch (type) {
         case "showing":
             return "brand";
@@ -57,7 +57,7 @@ function getEventColor(type: string): "brand" | "orange" | "rose" | "green" | "b
         case "moveIn":
             return "green";
         case "moveOut":
-            return "rose";
+            return "pink"; // Changed from "rose" to valid "pink"
         case "lease":
             return "blue";
         case "rent":
