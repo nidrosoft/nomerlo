@@ -323,8 +323,8 @@ export function StepAISupport({ data, onChange }: StepAISupportProps) {
                                             <TextArea
                                                 placeholder="Enter the answer..."
                                                 value={faq.answer}
-                                                onChange={(e) =>
-                                                    handleUpdateFAQ(faq.id, "answer", e.target.value)
+                                                onChange={(value) =>
+                                                    handleUpdateFAQ(faq.id, "answer", value)
                                                 }
                                                 rows={2}
                                             />
