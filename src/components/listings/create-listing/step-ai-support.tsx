@@ -19,6 +19,7 @@ import { Label } from "@/components/base/input/label";
 import { TextArea } from "@/components/base/textarea/textarea";
 import { Checkbox } from "@/components/base/checkbox/checkbox";
 import { Select } from "@/components/base/select/select";
+import { SelectItem } from "@/components/base/select/select-item";
 
 export interface KnowledgeBaseDocument {
     id: string;
@@ -247,7 +248,9 @@ export function StepAISupport({ data, onChange }: StepAISupportProps) {
                                             }
                                             items={DOCUMENT_CATEGORIES}
                                             className="w-40"
-                                        />
+                                        >
+                                            {(item) => <SelectItem id={item.id}>{item.label}</SelectItem>}
+                                        </Select>
                                         <button
                                             onClick={() => handleRemoveDocument(doc.id)}
                                             className="p-1 text-tertiary hover:text-error-primary transition-colors"
