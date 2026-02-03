@@ -4,6 +4,7 @@ import { CurrencyDollar, Calendar, File05 } from "@untitledui/icons";
 import { Input } from "@/components/base/input/input";
 import { Label } from "@/components/base/input/label";
 import { Select } from "@/components/base/select/select";
+import { SelectItem } from "@/components/base/select/select-item";
 import { Checkbox } from "@/components/base/checkbox/checkbox";
 
 export interface PricingData {
@@ -129,7 +130,9 @@ export function StepPricing({ data, onChange }: StepPricingProps) {
                                 onChange({ ...data, leaseTerm: key as string })
                             }
                             items={LEASE_TERMS}
-                        />
+                        >
+                            {(item) => <SelectItem id={item.id}>{item.label}</SelectItem>}
+                        </Select>
                     </div>
                 </div>
             </div>
