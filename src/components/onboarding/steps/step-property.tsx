@@ -83,7 +83,7 @@ export function StepProperty({ onContinue, onBack, onSkip, initialData }: StepPr
                             type="text"
                             placeholder="Start typing for auto-complete..."
                             value={address}
-                            onChange={(e) => handleAddressChange(e.target.value)}
+                            onChange={(value) => handleAddressChange(value)}
                             className="pl-10"
                         />
                     </div>
