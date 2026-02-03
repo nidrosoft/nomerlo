@@ -95,7 +95,7 @@ export function ApplicationActions({
                         />
                         <div className="flex justify-end gap-3">
                             <Button
-                                variant="secondary"
+                                color="secondary"
                                 onClick={() => setShowDenyModal(false)}
                             >
                                 Cancel
