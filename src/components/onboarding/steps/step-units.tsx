@@ -152,7 +152,7 @@ export function StepUnits({ propertyName, unitCount, onContinue, onBack, initial
                                 type="text"
                                 placeholder="e.g., 850"
                                 value={sqft}
-                                onChange={(e) => setSqft(e.target.value)}
+                                onChange={(value) => setSqft(value)}
                                 className="mt-1.5"
                             />
                         </div>
@@ -171,7 +171,7 @@ export function StepUnits({ propertyName, unitCount, onContinue, onBack, initial
                                     type="text"
                                     placeholder="1,500"
                                     value={rent}
-                                    onChange={(e) => setRent(e.target.value)}
+                                    onChange={(value) => setRent(value)}
                                     className="pl-7"
                                 />
                             </div>
@@ -189,7 +189,7 @@ export function StepUnits({ propertyName, unitCount, onContinue, onBack, initial
                                     type="text"
                                     placeholder="1,500"
                                     value={deposit}
-                                    onChange={(e) => setDeposit(e.target.value)}
+                                    onChange={(value) => setDeposit(value)}
                                     className="pl-7"
                                 />
                             </div>
