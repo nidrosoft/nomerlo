@@ -3,6 +3,7 @@
 import { Home02, Building07 } from "@untitledui/icons";
 import { Label } from "@/components/base/input/label";
 import { Select } from "@/components/base/select/select";
+import { SelectItem } from "@/components/base/select/select-item";
 
 // Mock data - replace with actual Convex queries
 const MOCK_PROPERTIES = [
@@ -68,9 +69,11 @@ export function StepSelectUnit({ data, onChange }: StepSelectUnitProps) {
                         items={MOCK_PROPERTIES.map((p) => ({
                             id: p.id,
                             label: p.name,
-                            description: p.address,
+                            supportingText: p.address,
                         }))}
-                    />
+                    >
+                        {(item) => <SelectItem id={item.id}>{item.label}</SelectItem>}
+                    </Select>
                 </div>
 
                 {/* Unit Selection */}
@@ -94,9 +97,11 @@ export function StepSelectUnit({ data, onChange }: StepSelectUnitProps) {
                                 items={vacantUnits.map((u) => ({
                                     id: u.id,
                                     label: u.name,
-                                    description: u.details,
+                                    supportingText: u.details,
                                 }))}
-                            />
+                            >
+                                {(item) => <SelectItem id={item.id}>{item.label}</SelectItem>}
+                            </Select>
                         )}
                     </div>
                 )}
