@@ -125,7 +125,7 @@ export function ListingFormLayout({
                 <Button
                     color="secondary"
                     size="lg"
-                    onPress={isFirstStep ? onCancel : onBack}
+                    onClick={isFirstStep ? onCancel : onBack}
                     className="min-w-[120px]"
                 >
                     {isFirstStep ? "Cancel" : "Back"}
@@ -133,8 +133,8 @@ export function ListingFormLayout({
                 <Button
                     color="primary"
                     size="lg"
-                    onPress={onNext}
-                    isDisabled={isNextDisabled || isSubmitting}
+                    onClick={onNext}
+                    disabled={isNextDisabled || isSubmitting}
                     className="min-w-[160px]"
                 >
                     {isSubmitting ? "Publishing..." : nextLabel || (isLastStep ? "Publish Listing" : "Continue")}
