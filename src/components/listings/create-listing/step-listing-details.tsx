@@ -82,7 +82,7 @@ export function StepListingDetails({ data, onChange }: StepListingDetailsProps) 
                     <TextArea
                         placeholder="Describe the property, amenities, neighborhood, and what makes it special..."
                         value={data.description}
-                        onChange={(e) => onChange({ ...data, description: e.target.value })}
+                        onChange={(value) => onChange({ ...data, description: value })}
                         rows={8}
                     />
                     <p className="text-xs text-tertiary">
