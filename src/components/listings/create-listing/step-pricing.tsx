@@ -61,7 +61,7 @@ export function StepPricing({ data, onChange }: StepPricingProps) {
             {/* Header */}
             <div className="flex items-center gap-3">
                 <div className="flex size-10 items-center justify-center rounded-lg bg-brand-solid">
-                    <DollarSign className="size-5 text-white" />
+                    <CurrencyDollar className="size-5 text-white" />
                 </div>
                 <div>
                     <h2 className="text-lg font-semibold text-primary">Pricing & Availability</h2>
