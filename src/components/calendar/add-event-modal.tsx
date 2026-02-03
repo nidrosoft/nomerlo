@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { Id } from "../../../convex/_generated/dataModel";
-import { getLocalTimeZone, today, CalendarDate } from "@internationalized/date";
+import { getLocalTimeZone, today, CalendarDate, DateValue } from "@internationalized/date";
 import { X, Calendar as CalendarIcon, CheckCircle, AlertCircle } from "@untitledui/icons";
 import { Button } from "@/components/base/buttons/button";
 import { Input } from "@/components/base/input/input";
@@ -51,7 +51,7 @@ export function AddEventModal({ isOpen, onClose, selectedDate }: AddEventModalPr
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [eventType, setEventType] = useState<string>("custom");
-    const [eventDate, setEventDate] = useState<CalendarDate | null>(
+    const [eventDate, setEventDate] = useState<DateValue | null>(
         selectedDate ? new CalendarDate(
             selectedDate.getFullYear(),
             selectedDate.getMonth() + 1,
