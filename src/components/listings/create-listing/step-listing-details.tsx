@@ -57,7 +57,7 @@ export function StepListingDetails({ data, onChange }: StepListingDetailsProps) 
                             </p>
                         </div>
                     </div>
-                    <Button color="primary" size="sm" onPress={handleGenerateWithAI}>
+                    <Button color="primary" size="sm" onClick={handleGenerateWithAI}>
                         Generate
                     </Button>
                 </div>
