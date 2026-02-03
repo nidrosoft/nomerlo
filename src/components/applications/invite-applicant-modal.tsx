@@ -207,7 +207,7 @@ export function InviteApplicantModal({ isOpen, onClose }: InviteApplicantModalPr
                                 Generate Link Only
                             </button>
                             <div className="flex gap-3">
-                                <Button variant="secondary" onClick={handleClose}>
+                                <Button color="secondary" onClick={handleClose}>
                                     Cancel
                                 </Button>
                                 <Button
@@ -268,7 +268,7 @@ export function InviteApplicantModal({ isOpen, onClose }: InviteApplicantModalPr
                         </div>
 
                         <div className="mt-6 flex justify-end gap-3">
-                            <Button variant="secondary" onClick={handleClose}>
+                            <Button color="secondary" onClick={handleClose}>
                                 Done
                             </Button>
                             <Button onClick={() => {
