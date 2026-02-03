@@ -1,3 +1,6 @@
+// Force dynamic rendering for authenticated onboarding pages
+export const dynamic = 'force-dynamic';
+
 export default function OnboardingLayout({
     children,
 }: {
