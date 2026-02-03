@@ -278,7 +278,7 @@ export function StepAISupport({ data, onChange }: StepAISupportProps) {
                                     Quick Facts / FAQ
                                 </h3>
                             </div>
-                            <Button color="secondary" size="sm" onPress={handleAddFAQ}>
+                            <Button color="secondary" size="sm" onClick={handleAddFAQ}>
                                 <Plus className="size-4" />
                                 Add Question
                             </Button>
