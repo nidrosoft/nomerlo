@@ -6,20 +6,14 @@ import { dark } from '@clerk/themes'
 
 import { Theme } from "@/providers/theme"; // Kept as per instruction, though not used in the new RootLayout
 import "@/styles/globals.css";
-// import { cx } from "@/utils/cx"; // Removed as it's no longer used
-// import { Inter } from "next/font/google"; // Removed as it's no longer used
-// import { RouteProvider } from "@/providers/router-provider"; // Removed as it's no longer used
 
+// Force dynamic rendering to prevent Clerk prerender errors during build
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Nomerlo',
   description: 'Real Estate Platform',
 }
-
-// export const viewport: Viewport = { // Removed as per new metadata
-//     themeColor: "#7f56d9",
-//     colorScheme: "light dark",
-// };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
