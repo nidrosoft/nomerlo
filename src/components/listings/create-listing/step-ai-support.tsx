@@ -531,8 +531,8 @@ export function StepAISupport({ data, onChange }: StepAISupportProps) {
                             <TextArea
                                 placeholder="Hi! 👋 I'm your AI assistant. Ask me anything about this property..."
                                 value={data.welcomeMessage}
-                                onChange={(e) =>
-                                    onChange({ ...data, welcomeMessage: e.target.value })
+                                onChange={(value) =>
+                                    onChange({ ...data, welcomeMessage: value })
                                 }
                                 rows={3}
                             />
