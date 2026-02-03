@@ -87,7 +87,7 @@ export function StepUnits({ units, onChange }: StepUnitsProps) {
                         </p>
                     </div>
                 </div>
-                <Button color="secondary" size="sm" iconLeading={Plus} onPress={addUnit}>
+                <Button color="secondary" size="sm" iconLeading={Plus} onClick={addUnit}>
                     Add Unit
                 </Button>
             </div>
@@ -100,7 +100,7 @@ export function StepUnits({ units, onChange }: StepUnitsProps) {
                     </div>
                     <p className="mt-4 text-sm font-medium text-secondary">No units added yet</p>
                     <p className="mt-1 text-sm text-tertiary">Click "Add Unit" to get started</p>
-                    <Button color="secondary" size="sm" iconLeading={Plus} onPress={addUnit} className="mt-4">
+                    <Button color="secondary" size="sm" iconLeading={Plus} onClick={addUnit} className="mt-4">
                         Add Your First Unit
                     </Button>
                 </div>

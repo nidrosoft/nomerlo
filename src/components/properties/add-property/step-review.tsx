@@ -135,7 +135,7 @@ export function StepReview({ basicInfo, units, amenities }: StepReviewProps) {
                                 </p>
                             </div>
                             {unit.rent && (
-                                <Badge color="success" type="modern" size="sm">
+                                <Badge color="success" type="pill-color" size="sm">
                                     ${unit.rent}/mo
                                 </Badge>
                             )}
