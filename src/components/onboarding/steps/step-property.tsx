@@ -119,7 +119,7 @@ export function StepProperty({ onContinue, onBack, onSkip, initialData }: StepPr
                         type="text"
                         placeholder="e.g., Main Street Apartments"
                         value={propertyName}
-                        onChange={(e) => setPropertyName(e.target.value)}
+                        onChange={(value) => setPropertyName(value)}
                         className="mt-1.5"
                     />
                 </div>
